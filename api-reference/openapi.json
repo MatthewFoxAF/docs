@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://jump-backend-playground.onrender.com/api"
     }
   ],
   "security": [
@@ -128,8 +128,35 @@
           }
         }
       }
+    },
+    "/skyclub": {
+      "getapps": {
+        "summary": "Retrieve all SkyClub applications",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-  },
+  }
+  
+  ,
   "components": {
     "schemas": {
       "Plant": {
@@ -185,11 +212,64 @@
         }
       }
     },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+        "Application": {
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "type": "string"
+        },
+        "linkedIn": {
+          "type": "string"
+        },
+        "discord": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "votes": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "companyPosition": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "aboutDesc": {
+          "type": "string"
+        },
+        "acceptedBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "UUPuuid": {
+          "type": "string"
+        },
+        "timeAdded": {
+          "type": "string"
+        },
+        "wallet": {
+          "type": "string"
+        },
+        "pk": {
+          "type": "string"
+        }
       }
+    }
+  },
+  "securitySchemes": {
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer"
     }
   }
 }
