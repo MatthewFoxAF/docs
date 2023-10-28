@@ -1,4 +1,14 @@
 {
+  "api": {
+    "baseUrl": "https://jump-backend-playground.onrender.com/api", // string array for multiple base URLs
+    "auth": {
+      "method": "bearer" // options: bearer, basic, key.
+    }
+  }
+}
+
+
+{
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
   "logo": {
