@@ -19,118 +19,8 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/skyclub/applications": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/skyclub": {
-      "getapps": {
         "summary": "Retrieve all SkyClub applications",
         "security": [
           {
@@ -154,9 +44,7 @@
         }
       }
     }
-  }
-  
-  ,
+  },
   "components": {
     "schemas": {
       "Plant": {
@@ -210,66 +98,66 @@
             "type": "string"
           }
         }
-      }
-    },
-        "Application": {
-      "type": "object",
-      "properties": {
-        "lastName": {
-          "type": "string"
-        },
-        "linkedIn": {
-          "type": "string"
-        },
-        "discord": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "votes": {
-          "type": "integer"
-        },
-        "city": {
-          "type": "string"
-        },
-        "companyPosition": {
-          "type": "string"
-        },
-        "company": {
-          "type": "string"
-        },
-        "aboutDesc": {
-          "type": "string"
-        },
-        "acceptedBy": {
-          "type": "array",
-          "items": {
+      },
+      "Application": {
+        "type": "object",
+        "properties": {
+          "lastName": {
+            "type": "string"
+          },
+          "linkedIn": {
+            "type": "string"
+          },
+          "discord": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "votes": {
+            "type": "integer"
+          },
+          "city": {
+            "type": "string"
+          },
+          "companyPosition": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "aboutDesc": {
+            "type": "string"
+          },
+          "acceptedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "UUPuuid": {
+            "type": "string"
+          },
+          "timeAdded": {
+            "type": "string"
+          },
+          "wallet": {
+            "type": "string"
+          },
+          "pk": {
             "type": "string"
           }
-        },
-        "UUPuuid": {
-          "type": "string"
-        },
-        "timeAdded": {
-          "type": "string"
-        },
-        "wallet": {
-          "type": "string"
-        },
-        "pk": {
-          "type": "string"
         }
       }
-    }
-  },
-  "securitySchemes": {
-    "bearerAuth": {
-      "type": "http",
-      "scheme": "bearer"
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
     }
   }
 }

@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto(...redacted...)@mintlify.com"
     }
   ],
   "topbarCtaButton": {
@@ -76,9 +76,6 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete",
         "api-reference/endpoint/getapps"
       ]
     }
@@ -87,5 +84,6 @@
     "twitter": "https://twitter.com/mintlify",
     "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+  },
+  "openapi": ["/api-reference/openapi.json"]
 }
