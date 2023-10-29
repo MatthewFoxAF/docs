@@ -43,6 +43,97 @@
           }
         }
       }
+    },
+    "/emails/subscribe": {
+      "post": {
+        "summary": "Add a subscriber to a Campaign Monitor list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "The email of the subscriber"
+                  },
+                  "listId": {
+                    "type": "string",
+                    "description": "The ID of the list to which the subscriber should be added"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the subscriber"
+                  },
+                  "customFields": {
+                    "type": "object",
+                    "description": "Additional custom fields for the subscriber",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Subscriber added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/emails/send": {
+      "post": {
+        "summary": "Send a transactional email using Campaign Monitor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "smartEmailId": {
+                    "type": "string",
+                    "description": "The ID of the smart email template in Campaign Monitor"
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Recipient's email address"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Additional data or parameters for the email",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmailResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -148,6 +239,31 @@
             "type": "string"
           },
           "pk": {
+            "type": "string"
+          }
+        }
+      },
+      "Response": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "EmailResponse": {
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string"
+          },
+          "MessageID": {
+            "type": "string"
+          },
+          "Recipient": {
             "type": "string"
           }
         }
