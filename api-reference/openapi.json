@@ -134,10 +134,107 @@
           }
         }
       }
+    },
+    "/smart-wallets/players": {
+      "get": {
+        "summary": "Retrieve all players from Openfort",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Player"
+                      }
+                    },
+                    "start": {
+                      "type": "integer"
+                    },
+                    "end": {
+                      "type": "integer"
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "Player": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "object": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "transactionIntents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionIntent"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Account"
+            }
+          }
+        }
+      },
+      "TransactionIntent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "Account": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
       "Plant": {
         "required": [
           "name"

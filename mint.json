@@ -94,9 +94,9 @@
         ]
      },
      {
-        "group":"Token Management",
+        "group":"Smart Wallets",
         "pages":[
-          "api-reference/endpoint/getapps"
+          "api-reference/endpoint/listplayers"
         ]
      }
   ],
